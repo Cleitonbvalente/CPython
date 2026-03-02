@@ -1,0 +1,13 @@
+# Programa exemplo
+
+inteiro x = 10
+real y = 20.5
+
+se x < y:
+    escreva("x é menor")
+
+senao:
+    escreva("x é maior")
+
+enquanto x != 0:
+    x = x - 1
