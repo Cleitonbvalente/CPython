@@ -15,6 +15,11 @@ NUM_REAL    {DIGITO}+"."{DIGITO}+
 "se"                   { printf("SE\n"); }
 "senao"                { printf("SENAO\n"); }
 "enquanto"             { printf("ENQUANTO\n"); }
+"funcao"               { printf("FUNCAO\n"); }
+"retorne"              { printf("RETORNE\n"); }
+
+"iniciofunc"           { printf("INICIO_FUNCAO\n"); }
+"fimfunc"              { printf("FIM_FUNCAO\n"); }
 
 "inteiro"              { printf("TIPO_INTEIRO\n"); }
 "real"                 { printf("TIPO_REAL\n"); }
@@ -26,31 +31,27 @@ NUM_REAL    {DIGITO}+"."{DIGITO}+
 "leia"                 { printf("LEIA\n"); }
 "escreva"              { printf("ESCREVA\n"); }
 
-"=="                   { printf("==\n"); }
-"!="                   { printf("!=\n"); }
-">="                   { printf(">=\n"); }
-"<="                   { printf("<=\n"); }
-">"                    { printf(">\n"); }
-"<"                    { printf("<\n"); }
-"&&"                   { printf("&&\n"); }
-"||"                   { printf("||\n"); }
-"!"                    { printf("!\n"); }
+"=="                   { printf("OP_IGUAL\n"); }
+"!="                   { printf("OP_DIFERENTE\n"); }
+">="                   { printf("OP_MAIOR_IGUAL\n"); }
+"<="                   { printf("OP_MENOR_IGUAL\n"); }
+">"                    { printf("OP_MAIOR\n"); }
+"<"                    { printf("OP_MENOR\n"); }
 
-"="                    { printf("=\n"); }
-"+"                    { printf("+\n"); }
-"-"                    { printf("-\n"); }
-"*"                    { printf("*\n"); }
-"/"                    { printf("/\n"); }
+"&&"                   { printf("OP_E_LOGICO\n"); }
+"||"                   { printf("OP_OU_LOGICO\n"); }
+"!"                    { printf("OP_NEGACAO\n"); }
 
-"("                    { printf("(\n"); }
-")"                    { printf(")\n"); }
-"{"                    { printf("{\n"); }
-"}"                    { printf("}\n"); }
-"["                    { printf("[\n"); }
-"]"                    { printf("]\n"); }
-":"                    { printf(":\n"); }
-","                    { printf(",\n"); }
-";"                    { printf(";\n"); }
+"="                    { printf("OP_ATRIBUICAO\n"); }
+"+"                    { printf("OP_SOMA\n"); }
+"-"                    { printf("OP_SUBTRACAO\n"); }
+"*"                    { printf("OP_MULTIPLICACAO\n"); }
+"/"                    { printf("OP_DIVISAO\n"); }
+
+"("                    { printf("ABRE_PARENTESE\n"); }
+")"                    { printf("FECHA_PARENTESE\n"); }
+":"                    { printf("DOIS_PONTOS\n"); }
+","                    { printf("VIRGULA\n"); }
 
 \"([^\"\n]*)\"         { printf("STRING\n"); }
 
@@ -59,7 +60,7 @@ NUM_REAL    {DIGITO}+"."{DIGITO}+
 
 {ID}                   { printf("IDENTIFICADOR\n"); }
 
-[ \t\r\n]+             { /* ignora espaços */ }
+[ \t\r\n]+             { }
 
 .                      { printf("ERRO: %s\n", yytext); }
 
