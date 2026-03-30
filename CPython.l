@@ -1,5 +1,6 @@
 %{
-#include <stdio.h>
+#include "CPython.tab.h"
+#include <stdlib.h>
 %}
 
 DIGITO      [0-9]
@@ -10,63 +11,47 @@ NUM_REAL    {DIGITO}+"."{DIGITO}+
 
 %%
 
-"#".*                  { printf("COMENTARIO_LINHA\n"); }
+"#".*                  { }
 
-"se"                   { printf("SE\n"); }
-"senao"                { printf("SENAO\n"); }
-"enquanto"             { printf("ENQUANTO\n"); }
-"funcao"               { printf("FUNCAO\n"); }
-"retorne"              { printf("RETORNE\n"); }
+"se"                   { return SE; }
+"senao"                { return SENAO; }
+"enquanto"             { return ENQUANTO; }
+"funcao"               { return FUNCAO; }
+"retorne"              { return RETORNE; }
 
-"iniciofunc"           { printf("INICIO_FUNCAO\n"); }
-"fimfunc"              { printf("FIM_FUNCAO\n"); }
+"iniciofunc"           { return INICIO_FUNCAO; }
+"fimfunc"              { return FIM_FUNCAO; }
 
-"inteiro"              { printf("TIPO_INTEIRO\n"); }
-"real"                 { printf("TIPO_REAL\n"); }
-"double"               { printf("TIPO_DOUBLE\n"); }
-"float"                { printf("TIPO_FLOAT\n"); }
-"bool"                 { printf("TIPO_BOOL\n"); }
-"string"               { printf("TIPO_STRING\n"); }
+"inteiro"              { return TIPO_INTEIRO; }
+"real"                 { return TIPO_REAL; }
 
-"leia"                 { printf("LEIA\n"); }
-"escreva"              { printf("ESCREVA\n"); }
+"escreva"              { return ESCREVA; }
 
-"=="                   { printf("OP_IGUAL\n"); }
-"!="                   { printf("OP_DIFERENTE\n"); }
-">="                   { printf("OP_MAIOR_IGUAL\n"); }
-"<="                   { printf("OP_MENOR_IGUAL\n"); }
-">"                    { printf("OP_MAIOR\n"); }
-"<"                    { printf("OP_MENOR\n"); }
+"=="                   { return OP_IGUAL; }
+"!="                   { return OP_DIFERENTE; }
+">="                   { return OP_MAIOR_IGUAL; }
+"<="                   { return OP_MENOR_IGUAL; }
+">"                    { return OP_MAIOR; }
+"<"                    { return OP_MENOR; }
 
-"&&"                   { printf("OP_E_LOGICO\n"); }
-"||"                   { printf("OP_OU_LOGICO\n"); }
-"!"                    { printf("OP_NEGACAO\n"); }
+"="                    { return OP_ATRIBUICAO; }
+"+"                    { return OP_SOMA; }
+"-"                    { return OP_SUBTRACAO; }
+"*"                    { return OP_MULTIPLICACAO; }
+"/"                    { return OP_DIVISAO; }
 
-"="                    { printf("OP_ATRIBUICAO\n"); }
-"+"                    { printf("OP_SOMA\n"); }
-"-"                    { printf("OP_SUBTRACAO\n"); }
-"*"                    { printf("OP_MULTIPLICACAO\n"); }
-"/"                    { printf("OP_DIVISAO\n"); }
+"("                    { return ABRE_PARENTESE; }
+")"                    { return FECHA_PARENTESE; }
+":"                    { return DOIS_PONTOS; }
+","                    { return VIRGULA; }
 
-"("                    { printf("ABRE_PARENTESE\n"); }
-")"                    { printf("FECHA_PARENTESE\n"); }
-":"                    { printf("DOIS_PONTOS\n"); }
-","                    { printf("VIRGULA\n"); }
+{NUM_REAL}             { yylval.flo = atof(yytext); return NUM_REAL; }
+{NUM_INT}              { yylval.flo = atof(yytext); return NUM_INT; }
 
-\"([^\"\n]*)\"         { printf("STRING\n"); }
-
-{NUM_REAL}             { printf("NUM_REAL\n"); }
-{NUM_INT}              { printf("NUM_INT\n"); }
-
-{ID}                   { printf("IDENTIFICADOR\n"); }
+{ID}                   { return IDENTIFICADOR; }
 
 [ \t\r\n]+             { }
 
-.                      { printf("ERRO: %s\n", yytext); }
+. { printf("Erro lexico: %s\n", yytext); }
 
 %%
-
-int main() {
-    yylex();
-    return 0;
-}

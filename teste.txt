@@ -1,27 +1,7 @@
-# Programa exemplo da linguagem
-
-funcao soma(a, b):
-iniciofunc
-    inteiro resultado
-    resultado = a + b
-    retorne resultado
-fimfunc
-
 funcao principal():
 iniciofunc
 
-    inteiro x
-    real y
-
-    x = 10
-    y = 20.5
-
-    se (x < y):
-        escreva("x é menor")
-    senao:
-        escreva("x é maior")
-
-    enquanto (x != 0):
-        x = x - 1
+    x = 1 + 1
+    escreva(2 + 3 * 4)
 
 fimfunc
