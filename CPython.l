@@ -27,6 +27,9 @@ NUM_REAL    {DIGITO}+"."{DIGITO}+
 
 "escreva"              { return ESCREVA; }
 
+"sqrt"                 { return SQRT; }
+"fat"                  { return FAT; }
+
 "=="                   { return OP_IGUAL; }
 "!="                   { return OP_DIFERENTE; }
 ">="                   { return OP_MAIOR_IGUAL; }
@@ -39,6 +42,7 @@ NUM_REAL    {DIGITO}+"."{DIGITO}+
 "-"                    { return OP_SUBTRACAO; }
 "*"                    { return OP_MULTIPLICACAO; }
 "/"                    { return OP_DIVISAO; }
+"^"                    { return OP_POTENCIA; }
 
 "("                    { return ABRE_PARENTESE; }
 ")"                    { return FECHA_PARENTESE; }

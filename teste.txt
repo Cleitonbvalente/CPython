@@ -1,7 +1,9 @@
 funcao principal():
 iniciofunc
 
-    x = 1 + 1
-    escreva(2 + 3 * 4)
+    escreva(2 ^ 3)
+    escreva(sqrt(16))
+    escreva(fat(5))
+    escreva(2 + 3 ^ 2)
 
 fimfunc
