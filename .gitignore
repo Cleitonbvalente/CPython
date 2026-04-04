@@ -1,2 +1,5 @@
 lex.yy.c
-analisador
+CPython.tab.c
+CPython.tab.h
+compilador
+*.zip
