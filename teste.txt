@@ -2,8 +2,21 @@ funcao principal():
 iniciofunc
 
     escreva(2 ^ 3)
-    escreva(sqrt(16))
+    escreva(3 ^ 2 ^ 2)
+    escreva(2 + 3 * 4)
+    escreva((2 + 3) * 4)
+    escreva(10 / 2 + 3)
+    escreva(10 / (2 + 3))
+
+    escreva(sqrt(25))
+    escreva(sqrt(9 + 7))
+    escreva(sqrt(4 ^ 2))
+
     escreva(fat(5))
-    escreva(2 + 3 ^ 2)
+    escreva(fat(3 + 2))
+    escreva(fat(3) + 2)
+
+    escreva(2 + 3 ^ 2 * 2)
+    escreva((2 + 3 ^ 2) * 2)
 
 fimfunc

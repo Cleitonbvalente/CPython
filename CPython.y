@@ -85,10 +85,6 @@ expressao:
           $$ = $1 - $3;
           printf("%.2f - %.2f = %.2f\n", $1, $3, $$);
       }
-    | expressao OP_POTENCIA expressao {
-          $$ = pow($1, $3);
-          printf("%.2f ^ %.2f = %.2f\n", $1, $3, $$);
-      }
     | termo { $$ = $1; }
 ;
 
@@ -105,7 +101,11 @@ termo:
 ;
 
 fator:
-      NUM_INT { $$ = $1; }
+      fator OP_POTENCIA fator {
+          $$ = pow($1, $3);
+          printf("%.2f ^ %.2f = %.2f\n", $1, $3, $$);
+      }
+    | NUM_INT { $$ = $1; }
     | NUM_REAL { $$ = $1; }
     | ABRE_PARENTESE expressao FECHA_PARENTESE { $$ = $2; }
     | SQRT ABRE_PARENTESE expressao FECHA_PARENTESE {
