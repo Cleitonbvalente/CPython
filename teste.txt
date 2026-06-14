@@ -1,22 +1,54 @@
 funcao principal():
 iniciofunc
+    inteiro n
+    inteiro total_coelhos
+    inteiro total_ratos
+    inteiro total_sapos
+    inteiro quantidade
+    inteiro total
+    real perc_coelhos
+    real perc_ratos
+    real perc_sapos
+    caractere tipo
 
-    escreva(2 ^ 3)
-    escreva(3 ^ 2 ^ 2)
-    escreva(2 + 3 * 4)
-    escreva((2 + 3) * 4)
-    escreva(10 / 2 + 3)
-    escreva(10 / (2 + 3))
+    total_coelhos = 0
+    total_ratos = 0
+    total_sapos = 0
 
-    escreva(sqrt(25))
-    escreva(sqrt(9 + 7))
-    escreva(sqrt(4 ^ 2))
+    leia(n)
 
-    escreva(fat(5))
-    escreva(fat(3 + 2))
-    escreva(fat(3) + 2)
+    enquanto (n > 0)
+    iniciofunc
+        leia(quantidade)
+        leia_char(tipo)
 
-    escreva(2 + 3 ^ 2 * 2)
-    escreva((2 + 3 ^ 2) * 2)
+        se (tipo == 'C')
+        iniciofunc
+            total_coelhos = total_coelhos + quantidade
+        fimfunc
+        senao se (tipo == 'R')
+        iniciofunc
+            total_ratos = total_ratos + quantidade
+        fimfunc
+        senao
+        iniciofunc
+            total_sapos = total_sapos + quantidade
+        fimfunc
 
+        n = n - 1
+    fimfunc
+
+    total = total_coelhos + total_ratos + total_sapos
+
+    perc_coelhos = (total_coelhos * 100.0) / total
+    perc_ratos = (total_ratos * 100.0) / total
+    perc_sapos = (total_sapos * 100.0) / total
+
+    escreva("Total: ", total, " cobaias")
+    escreva("Total de coelhos: ", total_coelhos)
+    escreva("Total de ratos: ", total_ratos)
+    escreva("Total de sapos: ", total_sapos)
+    escreva("Percentual de coelhos: ", perc_coelhos, " %")
+    escreva("Percentual de ratos: ", perc_ratos, " %")
+    escreva("Percentual de sapos: ", perc_sapos, " %")
 fimfunc
